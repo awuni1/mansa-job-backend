@@ -1,0 +1,31 @@
+# Render Blueprint Configuration
+# See https://render.com/docs/blueprint-spec
+
+services:
+  # Django Backend API
+  - type: web
+    name: mansa-jobs-api
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mansa-jobs-db
+          property: connectionString
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: FRONTEND_URL
+        sync: false
+      - key: SUPABASE_JWT_SECRET
+        sync: false
+    autoDeploy: true
+
+databases:
+  - name: mansa-jobs-db
+    databaseName: mansa_jobs
+    plan: free

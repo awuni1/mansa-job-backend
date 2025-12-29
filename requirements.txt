@@ -1,0 +1,25 @@
+# Django and Core
+Django>=5.0,<6.0
+djangorestframework>=3.14.0
+django-cors-headers>=4.3.0
+dj-database-url>=2.1.0
+
+# Authentication
+djangorestframework-simplejwt>=5.3.0
+PyJWT>=2.8.0
+
+# Database
+psycopg2-binary>=2.9.9
+
+# Production Server
+gunicorn>=21.2.0
+whitenoise>=6.6.0
+
+# Image handling
+Pillow>=10.0.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Development
+django-debug-toolbar>=4.2.0
