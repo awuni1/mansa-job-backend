@@ -36,6 +36,7 @@ urlpatterns = [
     path('api/companies/', include('companies.urls')),
     path('api/applications/', include('applications.urls')),
     path('api/analytics/', include('analytics.urls')),
+    path('api/ai/', include('ai_services.urls')),
 ]
 
 if settings.DEBUG:

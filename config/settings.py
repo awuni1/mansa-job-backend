@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'companies',
     'applications',
     'analytics',
+    'ai_services',
 ]
 
 MIDDLEWARE = [
@@ -255,3 +256,19 @@ LOGGING = {
         },
     },
 }
+
+# Redis Cache Configuration (for AI services)
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379/1'),
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        },
+        'KEY_PREFIX': 'mansa_jobs',
+        'TIMEOUT': 300,  # Default 5 minutes
+    }
+}
+
+# Google AI API Key
+GOOGLE_AI_API_KEY = os.environ.get('GOOGLE_AI_API_KEY', '')
